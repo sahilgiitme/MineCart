@@ -9,6 +9,11 @@
     %>
 
     <div class="mb-4">
+      <%= f.label :name, "Name", class: label_classes %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "email", class: input_classes %>
+    </div>
+        
+    <div class="mb-4">
       <%= f.label :email, "Email", class: label_classes %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: input_classes %>
     </div>
