@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  # code added to add extra field name to the user model 
+  # code added to add extra field name to the user model
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected

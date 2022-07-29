@@ -1,0 +1,22 @@
+<table class="table-auto border-separate border border-green-900 text-center bg-green-200">
+  <thead>
+    <tr>
+      <th class="border border-green-600">Customer Name</th>&nbsp;&nbsp;
+      <th class="border border-green-600">Product Name</th>&nbsp;&nbsp;
+      <th class="border border-green-600">Vendor Name</th>&nbsp;&nbsp;
+      <th class="border border-green-600">Product Type</th>&nbsp;&nbsp;
+      <th class="border border-green-600">Product Price</th>&nbsp;&nbsp;
+    </tr>
+  </thead>
+  <tbody>
+    <% @report.each do |report| %>
+      <tr>
+        <td class="border border-green-600"><%= report.user_name %></td>
+        <td class="border border-green-600"><%= report.product_name %></td>
+        <td class="border border-green-600"><%= report.vendor_name %></td>
+        <td class="border border-green-600"><%= report.prod_type %></td>
+        <td class="border border-green-600"><%= report.product_price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

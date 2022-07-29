@@ -53,3 +53,8 @@ p14 = Product.create! name: 'Carpet', price: 300, vendor_id: v4.id, product_type
 p15 = Product.create! name: 'Tea Set', price: 400, vendor_id: v3.id, product_type_id: pt4.id
 p16 = Product.create! name: 'Bed Sheet', price: 430, vendor_id: v4.id, product_type_id: pt4.id
 
+p17 = Product.create! name: 'Jeans', price: 430, vendor_id: v4.id, product_type_id: pt6.id
+p18 = Product.create! name: 'Shoes', price: 400, vendor_id: v4.id, product_type_id: pt6.id
+p19 = Product.create! name: 'T-Shirt', price: 300, vendor_id: v4.id, product_type_id: pt6.id
+
+p20 = Product.create! name: 'Table and Chair', price: 40_000, vendor_id: v6.id, product_type_id: pt5.id

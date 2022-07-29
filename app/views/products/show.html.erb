@@ -5,11 +5,34 @@
     <% end %>
 
     <%= render @product %>
-
-    <%= link_to 'Edit this product', edit_product_path(@product), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this product', product_path(@product), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
+    <% if is_admin? %>
+      <%= link_to 'Edit this product', edit_product_path(@product), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <div class="inline-block ml-2">
+        <%= button_to 'Destroy this product', product_path(@product), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      </div>
+    <% end %>  
+       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-full" onclick='save_report()' id="change">Buy</button>
     <%= link_to 'Back to products', products_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>
+
+<script>
+  // javascript code along with ajax call to conttroller method for sending data and receiving responce to change text of buy button
+  var product = '<%=@product.id%>';
+  function save_report(){
+  $.ajax({
+    type:'GET',
+    url: '/products/buy',
+    data: {"product": product},
+    success: function(result) {
+      if(result["message"] == "Success"){ 
+        document.getElementById("change").innerHTML = "Bought";
+        alert(result["message"]);
+      }
+      else{
+        alert(result["message"]);
+      }
+    }
+  });
+}
+</script>

@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  root 'products#index'
-  resources :products
+  get 'products/buy'
+  get 'reports/get_by_vendor'
+  get 'reports/get_by_type'
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root 'products#home'
+  resources :products
+  get 'reports/index' => 'reports#index'
+  get 'reports/show' => 'reports#show'
+  get 'reports/edit' => 'reports#edit'
 end

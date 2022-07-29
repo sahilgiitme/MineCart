@@ -1,12 +1,17 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorized, only: %i[edit update destroy new create index]
   before_action :set_product, only: %i[show edit update destroy]
 
   # GET /products or /products.json
   def index
+    @products = Product.where product_type_id: params[:product_type]
+    redirect_to root_url if @products.blank?
     # commented @products = Product.all and added below code over come N+1 query problem
-    @products = Product.includes(:vendor, :product_type)
+    # @products = Product.includes(:vendor, :product_type)
   end
+
+  def home; end
 
   # GET /products/1 or /products/1.json
   def show; end
@@ -23,7 +28,6 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    binding.pry
     # @product = Product.new(product_params)
     @product = Product.new(name: product_params[:name], product_type_id: product_params[:product_type], vendor_id: product_params[:vendor], price: product_params[:price])
 
@@ -61,7 +65,23 @@ class ProductsController < ApplicationController
     end
   end
 
+  def buy
+    @product = Product.find(params[:product])
+
+    @report = Report.new user_name: current_user.name, product_name: @product.name, prod_type: @product.product_type.name, vendor_name: @product.vendor.name, product_id: @product.id, product_price: @product.price
+
+    if @report.save
+      render json: { message: 'Success' }
+    else
+      render json: { message: 'Failed' }
+    end
+  end
+
   private
+
+  def authorized
+    redirect_to root_url unless current_user.admin
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_product
