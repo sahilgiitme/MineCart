@@ -1,25 +1,28 @@
-# Rails on Replit
-
-This is a template to get you started with Rails on Replit. It's ready to go so you can just hit run and start coding!
-
-This template was generated using `rails new` (after you install the `rails` gem from the packager sidebar) so you can always do that if you prefer to set it up from scratch. We only made a couple changes to make to run it on Replit:
-
-- bind the app on `0.0.0.0` instead of `localhost` (see `.replit`)
-- allow `*.repl.co` hosts (see `config/environments/development.rb`)
-- allow the app to be iframed on `replit.com` (see `config/application.rb`)
+## Installing code 
+Clone this repository >> cd into the directory
 
 ## Running the app
+1. change the ```config/database.yml``` file to your database credentials
+2. run ```bundle install```
+3. run ```rails db:create```
+4. run ```rails db:migrate db:seed```
+5. then compile the assets by running ```rails assets:precompile```
+6. the start the server by runnung ```rails s```
 
-Simply hit run! You can edit the run command from the `.replit` file.
+## Pre-populate credentials 
+for Admin :
+email: ```admin@gmail.com```
+pass: ```admin123```
+for User :
+email: ```user@gmail.com```
+pass: ```user123```
 
-## Running commands
+Several products has already been added to ```seed``` file 
 
 Start every command with `bundle exec` so that it runs in the context of the installed gems environment. The console pane will give you output from the server but you can run arbitrary commands from the shell without stopping the server.
 
-## Database
-
-SQLite would work in development but we don't recommend running it in production. Instead look into using the built-in [Replit database](http://docs.replit.com/misc/database). Otherwise you are welcome to connect databases from your favorite provider. 
-
-## Help
-
-If you need help you might be able to find an answer on our [docs](https://docs.replit.com) page. Feel free to report bugs and give us feedback [here](https://replit.com/support).
+## Gems used for development of this app
+1. ```devise``` for login and signin authentication
+2. ```devise-tailwinded``` to support devise views
+3. ```tailwindcss-rails``` that also support scaffold 
+4. ```pry``` for debugging
