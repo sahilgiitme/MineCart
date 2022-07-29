@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorized, only: %i[edit update destroy new create index]
+  before_action :authorized, only: %i[edit update destroy new create]
   before_action :set_product, only: %i[show edit update destroy]
 
   # GET /products or /products.json
