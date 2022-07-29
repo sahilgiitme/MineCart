@@ -17,13 +17,13 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :prod_type %>
-    <%= form.text_field :prod_type, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :product_type %>
+    <%= form.select "product_type", options_from_collection_for_select(@product_type,  "id", "name") %>
   </div>
 
   <div class="my-5">
     <%= form.label :vendor %>
-    <%= form.text_area :vendor, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.select :vendor, options_from_collection_for_select(@vendor, "id", "name") %>
   </div>
       
   <div class="my-5">
@@ -36,11 +36,9 @@
   </div>
 <% end %>
 
-<script>
-  // let show = document.getElementById("menu-button");
-
-  function show()
-    {
-      document.getElementById("toggle").style.display = "block";
+  <style>
+    #product_product_type, #product_vendor{
+      width: 200px;
+      height: 40px;
     }
-</script>
+  </style>

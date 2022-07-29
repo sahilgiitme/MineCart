@@ -10,15 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_28_184813) do
+ActiveRecord::Schema.define(version: 2022_07_29_084615) do
+
+  create_table "product_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "prod_type"
-    t.text "vendor"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "vendor_id"
+    t.integer "product_type_id"
+    t.index ["product_type_id"], name: "index_products_on_product_type_id"
+    t.index ["vendor_id"], name: "index_products_on_vendor_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,4 +43,12 @@ ActiveRecord::Schema.define(version: 2022_07_28_184813) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vendors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "products", "product_types"
+  add_foreign_key "products", "vendors"
 end
