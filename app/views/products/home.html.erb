@@ -1,11 +1,9 @@
 <% if is_admin? %>
-  <div class='mx-40 my-40'>
     <%=link_to "Full report", reports_index_path, class:"bg-purple-500 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-full"%>&nbsp;&nbsp
      <%= link_to "Report By Vendor", reports_show_path, class:"bg-red-500 hover:bg-red-700 text-white font-bold py-4 px-6 rounded-full" %>&nbsp;&nbsp
-     <%= link_to "Report By Product Type", reports_edit_path,  class:"bg-teal-500 hover:bg-teal-700 text-white font-bold py-4 px-6 rounded-full" %>&nbsp;&nbsp
-  </div>
-<% else %>
-  <div class='mx-40 my-40'>
+     <%= link_to "Report By Product Type", reports_edit_path,  class:"bg-teal-500 hover:bg-teal-700 text-white font-bold py-4 px-6 rounded-full" %>&nbsp;&nbsp   
+<% end %>
+  
     <%= link_to "Home Appliance", products_path(product_type: 1), class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-full" %>&nbsp;&nbsp
       
     <%= link_to "Groceries", products_path(product_type: 2), class:"bg-purple-500 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-full" %>&nbsp;&nbsp
@@ -17,5 +15,3 @@
     <%= link_to "Furnitures", products_path(product_type: 5), class:"bg-pink-500 hover:bg-pink-700 text-white font-bold py-4 px-6 rounded-full" %>&nbsp;&nbsp
       
     <%= link_to "Fashion" , products_path(product_type: 6), class:"bg-orange-500 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-full" %>
-  </div>
-<% end %>
